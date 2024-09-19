@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "398899871750",
+    "project_id": "trash-buddy-a4d7d",
+    "storage_bucket": "trash-buddy-a4d7d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398899871750:android:0ea0678de1f5093c824387",
+        "android_client_info": {
+          "package_name": "com.example.trashbuddy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT6InQ42CdT3s6wSNL7dg0kpfJyzgpUgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
