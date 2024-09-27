@@ -3,7 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:trashbuddy/ADMIN/addearnings.dart';
 import 'package:trashbuddy/ADMIN/addservice.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/mainprovider.dart';
+
+import '../PROVIDER/mainProvider.dart';
 
 class Earnings extends StatelessWidget {
   Earnings({super.key});
@@ -28,7 +29,7 @@ class Earnings extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: green1,
-        floatingActionButton: Consumer<mainProvider>(
+        floatingActionButton: Consumer<Mainprovider>(
           builder: (context,value,child) {
             return FloatingActionButton(
               shape: CircleBorder(side: BorderSide(color: green5)),
@@ -64,7 +65,7 @@ class Earnings extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Consumer<mainProvider>(
+            Consumer<Mainprovider>(
               builder: (context,value,child) {
                 return GridView.builder(
                   padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),

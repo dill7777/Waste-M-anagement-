@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/mainprovider.dart';
 
 import '../CONSTANT/widget.dart';
+import '../PROVIDER/mainProvider.dart';
 
 class AddWaste extends StatelessWidget {
   String from;
@@ -40,7 +40,7 @@ class AddWaste extends StatelessWidget {
             height: 80,
           ),
           Center(
-            child: Consumer<mainProvider>(
+            child: Consumer<Mainprovider>(
               builder: (context,value,child) {
                 return Container(
                   height: height/17,
@@ -67,7 +67,7 @@ class AddWaste extends StatelessWidget {
           SizedBox(
             height: 120,
           ),
-          Center(child: Consumer<mainProvider>(
+          Center(child: Consumer<Mainprovider>(
             builder: (context,value,child) {
               return InkWell(
                   onTap: () {

@@ -41,7 +41,7 @@ class Addpricelist extends StatelessWidget {
               height: 80,
             ),
             Center(
-              child: Consumer<mainProvider>(
+              child: Consumer<Mainprovider>(
                   builder: (context,value,child) {
                     return Container(
                       height: height/17,
@@ -68,7 +68,7 @@ class Addpricelist extends StatelessWidget {
             SizedBox(
               height: 15,
             ),
-            Consumer<mainProvider>(
+            Consumer<Mainprovider>(
               builder: (context,value,child) {
                 return Center(
                   child: Container(
@@ -96,7 +96,7 @@ class Addpricelist extends StatelessWidget {
             SizedBox(
               height: 120,
             ),
-            Center(child: Consumer<mainProvider>(
+            Center(child: Consumer<Mainprovider>(
                 builder: (context,value,child) {
                   return InkWell(
                       onTap: () {

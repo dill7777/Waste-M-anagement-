@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/mainprovider.dart';
-import 'package:trashbuddy/USER/instruction.dart';
+ import 'package:trashbuddy/USER/instruction.dart';
 
 import '../CONSTANT/widget.dart';
+import '../PROVIDER/mainprovider.dart';
 
 
 class UploadPicture extends StatelessWidget {
@@ -48,7 +48,7 @@ class UploadPicture extends StatelessWidget {
             ),
             SizedBox(height: 25),
             Center(
-              child: Consumer<mainProvider>(
+              child: Consumer<Mainprovider>(
                 builder: (context, value, child) {
                   return SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -87,7 +87,7 @@ class UploadPicture extends StatelessWidget {
             ),
             SizedBox(height: 60),
             Center(
-              child: Consumer<mainProvider>(
+              child: Consumer<Mainprovider>(
                 builder: (context, value, child) {
                   return InkWell(
                     onTap: () {
@@ -115,7 +115,7 @@ class UploadPicture extends StatelessWidget {
   }
 
   void showBottomSheet(BuildContext context, int index) {
-    mainProvider provider = Provider.of<mainProvider>(context, listen: false);
+    Mainprovider provider = Provider.of<Mainprovider>(context, listen: false);
     showModalBottomSheet(
       elevation: 10,
       backgroundColor: Colors.white,

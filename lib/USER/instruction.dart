@@ -3,8 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/mainprovider.dart';
-import 'package:trashbuddy/USER/Address.dart';
+ import 'package:trashbuddy/USER/Address.dart';
 import 'package:trashbuddy/USER/uploadpic.dart';
 
 import '../CONSTANT/widget.dart';
@@ -439,7 +438,7 @@ class Instruction extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-              Consumer<mainProvider>(
+              Consumer<Mainprovider>(
                 builder: (context, value, child) {
                   // Print statement to debug the complaint list
                   print("Complaint List: ${value.complaintList}");
@@ -508,7 +507,7 @@ class Instruction extends StatelessWidget {
                     color: white,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Consumer<mainProvider>(
+                  child: Consumer<Mainprovider>(
                     builder: (context, value, child) {
                       return TextField(
                         controller: value.complaintCt,

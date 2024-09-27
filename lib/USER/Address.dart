@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
 import 'package:trashbuddy/CONSTANT/widget.dart';
-import 'package:trashbuddy/PROVIDER/mainprovider.dart';
 
+import '../PROVIDER/mainprovider.dart';
 import 'bottomnavigation.dart';
 
 class Address extends StatelessWidget {
@@ -44,7 +44,7 @@ class Address extends StatelessWidget {
                       border: Border.all(color: green2),
                       borderRadius: BorderRadius.circular(5)
                     ),
-                    child: Consumer<mainProvider>(
+                    child: Consumer<Mainprovider>(
                       builder: (context,value,child) {
                         return TextField(
                           controller: value.complainterNameCt,
@@ -80,7 +80,7 @@ class Address extends StatelessWidget {
                         border: Border.all(color: green2),
                         borderRadius: BorderRadius.circular(5)
                     ),
-                    child: Consumer<mainProvider>(
+                    child: Consumer<Mainprovider>(
                       builder: (context,value,child) {
                         return TextField(
                           controller: value.complainterAddressCt,
@@ -100,7 +100,7 @@ class Address extends StatelessWidget {
               SizedBox(
                 height: 100,
               ),
-              Consumer<mainProvider>(
+              Consumer<Mainprovider>(
                 builder: (context,value,child) {
           
                   return InkWell(

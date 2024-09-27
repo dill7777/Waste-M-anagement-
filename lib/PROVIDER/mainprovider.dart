@@ -11,15 +11,18 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trashbuddy/USER/profile.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../MODELCLASS/location.dart';
-import '../MODELCLASS/modelclass.dart';
+ import '../MODELCLASS/modelclass.dart';
 import '../MODELCLASS/usermodels.dart';
 
-class mainProvider with ChangeNotifier {
+class Mainprovider extends ChangeNotifier {
   final FirebaseFirestore db = FirebaseFirestore.instance;
   Reference ref = FirebaseStorage.instance.ref("IMAGE URL");
   Reference imgstr = FirebaseStorage.instance.ref("Images");
+
+
+
+
+
 
   // ___________________________________Category_____________________________________________________
 
@@ -1043,69 +1046,6 @@ class mainProvider with ChangeNotifier {
 
 
 
-  LocationData? _locationData;
-
-  LocationData? get locationData => _locationData;
-
-  Future<void> getCurrentLocationAndSave() async {
-    try {
-      LocationPermission permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
-          throw Exception('Location permissions are denied');
-        }
-      }
-
-      Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
-      );
-
-      List<Placemark> placemarks = await placemarkFromCoordinates(
-        position.latitude,
-        position.longitude,
-      );
-
-      String locationName = 'Unknown';
-      if (placemarks.isNotEmpty) {
-        Placemark place = placemarks.first;
-        locationName = '${place.locality}, ${place.country}';
-      }
-
-      _locationData = LocationData(
-        latitude: position.latitude,
-        longitude: position.longitude,
-        name: locationName,
-      );
-
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setDouble('latitude', position.latitude);
-      await prefs.setDouble('longitude', position.longitude);
-      await prefs.setString('locationName', locationName);
-
-      notifyListeners();
-
-      print('Location saved: ${_locationData?.latitude}, ${_locationData?.longitude}, ${_locationData?.name}');
-    } catch (e) {
-      print('Error getting or saving location: $e');
-    }
-  }
-
-  Future<void> loadSavedLocation() async {
-    final prefs = await SharedPreferences.getInstance();
-    double? latitude = prefs.getDouble('latitude');
-    double? longitude = prefs.getDouble('longitude');
-    String? name = prefs.getString('locationName');
-
-    if (latitude != null && longitude != null && name != null) {
-      _locationData = LocationData(
-        latitude: latitude,
-        longitude: longitude,
-        name: name,
-      );
-      notifyListeners();
-    }
-  }
 
 //   ______________________________________profile____________________________________________________________________
 

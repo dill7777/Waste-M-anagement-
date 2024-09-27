@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/ADMIN/addservice.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/mainprovider.dart';
+
+import '../PROVIDER/mainProvider.dart';
 
 class Services extends StatelessWidget {
    Services({super.key});
@@ -25,7 +26,7 @@ class Services extends StatelessWidget {
      var height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: green1,
-      floatingActionButton: Consumer<mainProvider>(
+      floatingActionButton: Consumer<Mainprovider>(
         builder: (context,value,child) {
           return FloatingActionButton(
             shape: CircleBorder(side: BorderSide(color: green5)),
@@ -60,7 +61,7 @@ class Services extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Consumer<mainProvider>(
+            Consumer<Mainprovider>(
               builder: (context,value,child) {
                 return
                   GridView.builder(

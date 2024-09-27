@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/mainprovider.dart';
 
+import '../PROVIDER/mainprovider.dart';
 import 'bottomnavigation.dart';
 import 'home.dart';
 
@@ -60,7 +60,7 @@ class Splash2 extends StatelessWidget {
           
           Center(child: Icon(Icons.more_horiz_outlined,color: green2,size: 70,)),
           SizedBox(height: 5,),
-          Consumer<mainProvider>(
+          Consumer<Mainprovider>(
             builder: (context,value,child) {
               return InkWell(
                   onTap: (){
