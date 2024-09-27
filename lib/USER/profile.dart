@@ -1,18 +1,29 @@
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:flutter/cupertino.dart';
+// import 'package:flutter/material.dart';
+// import 'package:provider/provider.dart';
+// import 'package:trashbuddy/CONSTANT/Colors.dart';
+// import 'package:trashbuddy/PROVIDER/LoginProvidernew.dart';
+// import 'package:trashbuddy/PROVIDER/mainProvider.dart';
+// import 'package:trashbuddy/USER/login.dart';
+
+
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/LoginProvidernew.dart';
-import 'package:trashbuddy/PROVIDER/mainProvider.dart';
-import 'package:trashbuddy/USER/login.dart';
+import 'package:trashbuddy/PROVIDER/mainprovider.dart';
+import '../CONSTANT/Colors.dart';
+import '../PROVIDER/LoginProvidernew.dart';
+import 'login.dart';
+
 
 class Profile extends StatelessWidget {
   String User_Id;
-  String Photo;
   String User_Name;
   String User_Number;
-   Profile({super.key,required this.User_Id,required this.Photo,required this.User_Name,required this.User_Number});
+   Profile({super.key,required this.User_Id,required this.User_Name,required this.User_Number});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +50,7 @@ class Profile extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // SizedBox(height: 50,),
+            SizedBox(height: 30,),
             // Consumer<mainProvider>(
             //   builder: (context,value,child) {
             //     return ListView.builder(
@@ -329,3 +340,171 @@ class Profile extends StatelessWidget {
   }
 
 }
+
+
+//
+// import 'package:flutter/cupertino.dart';
+// import 'package:flutter/material.dart';
+// import 'package:provider/provider.dart';
+// import 'package:trashbuddy/PROVIDER/mainprovider.dart';
+// import '../CONSTANT/Colors.dart';
+// class Profile extends StatelessWidget {
+//   final String User_Id;
+//   final String Photo;
+//   final String User_Name;
+//   final String User_Number;
+//
+//   Profile({
+//     super.key,
+//     required this.User_Id,
+//     required this.Photo,
+//     required this.User_Name,
+//     required this.User_Number,
+//   });
+//
+//   @override
+//   Widget build(BuildContext context) {
+//
+//         return Scaffold(
+//           backgroundColor: green1,
+//           appBar: AppBar(
+//             backgroundColor: green2,
+//             title: Text(
+//               "Profile",
+//               style: TextStyle(
+//                 color: white,
+//                 fontFamily: "kadwa",
+//                 fontSize: 21,
+//               ),
+//             ),
+//             centerTitle: true,
+//             leading: InkWell(
+//               onTap: () {
+//                 Navigator.pop(context);
+//               },
+//               child: Icon(Icons.chevron_left, size: 30, color: white),
+//             ),
+//           ),
+//           body: SingleChildScrollView(
+//             child: Padding(
+//               padding: EdgeInsets.all(10),
+//               child: Consumer<mainProvider>(
+//                 builder: (context11,value,child) {
+//                   return Column(
+//                     children: [
+//                       InkWell(
+//                         onTap: () {
+//                           showBottomSheet(context, 2);
+//                         },
+//                         child:
+//                         value.profileFileImg != null
+//                             ? Container(
+//                           height: 120,
+//                           width: 120,
+//                           decoration: BoxDecoration(
+//                             color: green1,
+//                             borderRadius: BorderRadius.all(
+//                               Radius.circular(100),
+//                             ),
+//                             image: DecorationImage(
+//                               image: FileImage(value.profileFileImg!),
+//                               fit: BoxFit.cover,
+//                             ),
+//                           ),
+//                         )
+//                             : Container(
+//                           height: 120,
+//                           width: 120,
+//                           decoration: BoxDecoration(
+//                             color: green2,
+//                             borderRadius: BorderRadius.all(
+//                               Radius.circular(100),
+//                             ),
+//                           ),
+//                           child: Center(
+//                             child: Icon(
+//                               CupertinoIcons.profile_circled,
+//                               size: 100,
+//                               color: green2,
+//                             ),
+//                           ),
+//                         ),
+//                       ),
+//                       value.profileFileImg != null
+//                           ? TextButton(
+//                         onPressed: () {
+//                           // value.addProfile(User_Name, User_Number);
+//                         },
+//                         child: Text("Done"),
+//                       )
+//                           :
+//                       Center(
+//                         child: Column(
+//                           children: [
+//                             Text(
+//                               User_Name,
+//                               style: TextStyle(
+//                                 color: green2,
+//                                 fontSize: 20,
+//                                 fontWeight: FontWeight.w500,
+//                               ),
+//                             ),
+//                             Text(
+//                               User_Number,
+//                               style: TextStyle(
+//                                 color: green2,
+//                                 fontSize: 20,
+//                                 fontWeight: FontWeight.w500,
+//                               ),
+//                             ),
+//                           ],
+//                         ),
+//                       ),
+//                     ],
+//                   );
+//                 }
+//               ),
+//             ),
+//           ),
+//         );
+//
+//   }
+//
+//   void showBottomSheet(BuildContext context, int index) {
+//     mainProvider prov = Provider.of<mainProvider>(context, listen: false);
+//     showModalBottomSheet(
+//       elevation: 10,
+//       backgroundColor: Colors.white,
+//       shape: const RoundedRectangleBorder(
+//         borderRadius: BorderRadius.only(
+//           topLeft: Radius.circular(10.0),
+//           topRight: Radius.circular(10.0),
+//         ),
+//       ),
+//       context: context,
+//       builder: (BuildContext bc) {
+//         return Wrap(
+//           children: <Widget>[
+//             ListTile(
+//               leading: Icon(Icons.camera_enhance_sharp, color: green2),
+//               title: const Text('Camera'),
+//               onTap: () async {
+//                 await prov.getcmpImgcamera();
+//                 Navigator.pop(context);
+//               },
+//             ),
+//             ListTile(
+//               leading: Icon(Icons.photo, color: green2),
+//               title: const Text('Gallery'),
+//               onTap: () async {
+//                 await prov.getcmpImggallery();
+//                 Navigator.pop(context);
+//               },
+//             ),
+//           ],
+//         );
+//       },
+//     );
+//   }
+// }
+//

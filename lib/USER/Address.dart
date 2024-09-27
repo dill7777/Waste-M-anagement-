@@ -106,7 +106,7 @@ class Address extends StatelessWidget {
                   return InkWell(
                       onTap: () {
                         value.addComplaint();
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>bottomnavigation(userId: '',)));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>bottomnavigation(userId: '', Username: '', Usernumber: '', loginphno: '',)));
           
                       },
                       child: Center(child: btn2(btn1, "Submit", white, 80, 35, 14, FontWeight.w500, "kadwa")));

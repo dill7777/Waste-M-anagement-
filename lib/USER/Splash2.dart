@@ -65,7 +65,7 @@ class Splash2 extends StatelessWidget {
               return InkWell(
                   onTap: (){
                     value.getCategory();
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>bottomnavigation(userId: '',)));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>bottomnavigation(userId: '', Username: '', Usernumber: '', loginphno: '',)));
                   },
                   child: btn(green2, "Continue", Colors.white, 120, 50, 18, FontWeight.w500));
             }

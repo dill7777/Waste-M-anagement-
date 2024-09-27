@@ -987,7 +987,7 @@ class mainProvider with ChangeNotifier {
     }
   }
 
-  /// user credentails
+  //______________ user credentails
 
   TextEditingController usernameController = TextEditingController();
   TextEditingController usernumberController = TextEditingController();
@@ -999,7 +999,7 @@ class mainProvider with ChangeNotifier {
     map["User_Name"] = usernameController.text;
     map["User_Number"] = usernumberController.text;
     map["Type"] = "USER";
-    db.collection("UserList").doc(id).set(map);
+    // db.collection("UserList").doc(id).set(map);
     db.collection("USERS").doc(id).set(map);
     getUser();
     notifyListeners();
@@ -1114,7 +1114,7 @@ class mainProvider with ChangeNotifier {
 
   File? profileFileImg;
   String profileimg = '';
-  Reference ref7 = FirebaseStorage.instance.ref("STAFF_IMAGE");
+  // Reference ref7 = FirebaseStorage.instance.ref("STAFF_IMAGE");
 
   Future<void> addProfile(String from, String oldid) async {
     String id = DateTime.now().microsecondsSinceEpoch.toString();
@@ -1143,9 +1143,9 @@ class mainProvider with ChangeNotifier {
       addmap['PHOTO'] = profileimg;
     }
     if (from == "EDIT") {
-      db.collection("USERS").doc(oldid).update(addmap);
+      db.collection("USERPROFILE").doc(oldid).update(addmap);
     } else {
-      db.collection("USERS").doc(id).set(addmap);
+      db.collection("USERPROFILE").doc(id).set(addmap);
     }
     print("herealso" + profileFileImg!.toString());
 
@@ -1248,14 +1248,14 @@ class mainProvider with ChangeNotifier {
   }
 
   void DeleteProfile(id, BuildContext context) {
-    db.collection("USERS").doc(id).delete();
+    db.collection("USERPROFILE").doc(id).delete();
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text("Delete Succesfully"),
     ));
   }
 
   void EditProfile(String id) {
-    db.collection("USERS").doc(id).get().then((value) {
+    db.collection("USERPROFILE").doc(id).get().then((value) {
       if (value.exists) {
         Map<dynamic, dynamic> addmap = value.data() as Map;
         UsernameCt.text = addmap["User_Name"].toString();

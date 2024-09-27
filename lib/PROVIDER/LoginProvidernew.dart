@@ -108,174 +108,171 @@ class LoginProviderNew extends ChangeNotifier {
     });
   }
 
-  // Future<void> userAuthorized(String? phoneNumber, BuildContext context) async {
-  //   print("fffffsssss");
-  //   String loginUsername='';
-  //   String loginUsertype='';
-  //   String loginUserid='';
-  //   String productid='';
-  //   String userId='';
-  //   String loginphno="";
-  //   mainProvider MainProv = Provider.of<mainProvider>(context, listen: false);
-  //
-  //   try {
-  //     var phone = phoneNumber!;
-  //     print(phoneNumber.toString()+"duudud");
-  //     db.collection("USERS").where("User_Number",isEqualTo:phone).get().then((value) {
-  //       if(value.docs.isNotEmpty){
-  //         print("fiifuif");
-  //         for(var element in value.docs) {
-  //           Map<dynamic, dynamic> map = element.data();
-  //           loginUsername = map['User_Name'].toString();
-  //           loginUsertype = map['Type'].toString();
-  //           loginphno=map["User_Number"].toString();
-  //           loginUserid = element.id;
-  //           userId = map["User_Id"].toString();
-  //           String uid = userId;
-  //           if (loginUsertype == "ADMIN") {
-  //             print("cb bcb");
-  //             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>AdminHome() ,));
-  //           }
-  //           else {
-  //             print("mxnxn");
-  //
-  //
-  //             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => bottomnavigation(userId: '',)));
-  //
-  //             // db.collection("CUSTOMERS").doc(element.id).get().then((valueee){
-  //             //   if(valueee.exists){
-  //             //     print("cxcjjjc"+valueee.id);
-  //             //     Map<dynamic, dynamic> customerMap = valueee.data() as Map;
-  //             //     loginPhoto= customerMap["PHOTO"].toString();
-  //             //     print("dkdkdd");
-  //             //
-  //             //
-  //             //   }
-  //             // });
-  //           }
-  //         }
-  //
-  //       }
-  //       else {
-  //         const snackBar = SnackBar(
-  //             backgroundColor: Colors.white,
-  //             duration: Duration(milliseconds: 3000),
-  //             content: Text("Sorry , You don't have any access",
-  //               textAlign: TextAlign.center,
-  //               softWrap: true,
-  //               style: TextStyle(
-  //                   fontSize: 18,
-  //                   color: Colors.black,
-  //                   fontWeight: FontWeight.bold),
-  //             ));
-  //
-  //         ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  //       }
-  //
-  //     });
-  //
-  //
-  //   } catch (e) {
-  //
-  //
-  //     // const snackBar = SnackBar(
-  //     //     backgroundColor: Colors.white,
-  //     //     duration: Duration(milliseconds: 3000),
-  //     //     content: Text("Sorry , Some Error Occurred",
-  //     //       textAlign: TextAlign.center,
-  //     //       softWrap: true,
-  //     //       style: TextStyle(
-  //     //           fontSize: 18,
-  //     //           color: Colors.black,
-  //     //           fontWeight: FontWeight.bold),
-  //     //     ));
-  //     // ScaffoldMessenger.of(context).show
-  //     SnackBar(snackBar);
-  //   }
-  // }
   Future<void> userAuthorized(String? phoneNumber, BuildContext context) async {
-    if (phoneNumber == null) {
-      const snackBar = SnackBar(
-          backgroundColor: Colors.white,
-          duration: Duration(milliseconds: 3000),
-          content: Text(
-            "Phone number is required",
-            textAlign: TextAlign.center,
-            softWrap: true,
-            style: TextStyle(
-                fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
-          ));
-
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      return;
-    }
-
-    print("Starting user authorization process...");
-
-    String loginUsername = '';
-    String loginUsertype = '';
-    String loginUserid = '';
-    String productid = '';
-    String userId = '';
-    String loginphno = "";
+    print("fffffsssss");
+    String loginUsername='';
+    String loginUsertype='';
+    String loginUserid='';
+    String productid='';
+    String userId='';
+    String loginphno="";
+    mainProvider MainProv = Provider.of<mainProvider>(context, listen: false);
 
     try {
-      print("Checking phone number: $phoneNumber");
-      var value = await db.collection("USERS").where("User_Number", isEqualTo: phoneNumber).get();
+      var phone = phoneNumber!;
+      print(phoneNumber.toString()+"duudud");
+      db.collection("USERS").where("User_Number",isEqualTo:phone).get().then((value) {
+        if(value.docs.isNotEmpty){
+          print("fiifuif");
+          for(var element in value.docs) {
+            Map<dynamic, dynamic> map = element.data();
+            loginUsername = map['User_Name'].toString();
+            loginUsertype = map['Type'].toString();
+            loginphno=map["User_Number"].toString();
+            loginUserid = element.id;
+            userId = map["User_Id"].toString();
+            String uid = userId;
+            if (loginUsertype == "ADMIN") {
+              print("cb bcb");
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>AdminHome() ,));
+            }
+            else {
+              print("mxnxn");
 
-      if (value.docs.isNotEmpty) {
-        print("User found");
-        for (var element in value.docs) {
-          Map<dynamic, dynamic> map = element.data();
-          loginUsername = map['User_Name'].toString();
-          loginUsertype = map['Type'].toString();
-          loginphno = map["User_Number"].toString();
-          loginUserid = element.id;
-          userId = map["User_Id"].toString();
 
-          if (loginUsertype == "ADMIN") {
-            print("Navigating to Admin Home...");
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => AdminHome()),
-            );
-          } else {
-            print("Navigating to User Home...");
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => bottomnavigation(userId: userId)),
-            );
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => bottomnavigation(userId: uid,  loginphno: loginphno, Username: loginUsername, Usernumber: '',)));
+
+              // db.collection("CUSTOMERS").doc(element.id).get().then((valueee){
+              //   if(valueee.exists){
+              //     print("cxcjjjc"+valueee.id);
+              //     Map<dynamic, dynamic> customerMap = valueee.data() as Map;
+              //     loginPhoto= customerMap["PHOTO"].toString();
+              //     print("dkdkdd");
+              //
+              //
+              //   }
+              // });
+            }
           }
+
         }
-      } else {
-        const snackBar = SnackBar(
-            backgroundColor: Colors.white,
-            duration: Duration(milliseconds: 3000),
-            content: Text(
-              "Sorry, you don't have any access",
-              textAlign: TextAlign.center,
-              softWrap: true,
-              style: TextStyle(
-                  fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
-            ));
+        else {
+          const snackBar = SnackBar(
+              backgroundColor: Colors.white,
+              duration: Duration(milliseconds: 3000),
+              content: Text("Sorry , You don't have any access",
+                textAlign: TextAlign.center,
+                softWrap: true,
+                style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold),
+              ));
 
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      }
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        }
+
+      });
+
+
     } catch (e) {
-      const snackBar = SnackBar(
-          backgroundColor: Colors.white,
-          duration: Duration(milliseconds: 3000),
-          content: Text(
-            "Sorry, an error occurred",
-            textAlign: TextAlign.center,
-            softWrap: true,
-            style: TextStyle(
-                fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
-          ));
 
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      print("Error during user authorization: $e");
+
+      // const snackBar = SnackBar(
+      //     backgroundColor: Colors.white,
+      //     duration: Duration(milliseconds: 3000),
+      //     content: Text("Sorry , Some Error Occurred",
+      //       textAlign: TextAlign.center,
+      //       softWrap: true,
+      //       style: TextStyle(
+      //           fontSize: 18,
+      //           color: Colors.black,
+      //           fontWeight: FontWeight.bold),
+      //     ));
+      // ScaffoldMessenger.of(context).show
+      // SnackBar(snackBar);
     }
   }
+  // Future<void> userAuthorized(String? phoneNumber, BuildContext context) async {
+  //   if (phoneNumber == null) {
+  //     const snackBar = SnackBar(
+  //         backgroundColor: Colors.white,
+  //         duration: Duration(milliseconds: 3000),
+  //         content: Text(
+  //           "Phone number is required",
+  //           textAlign: TextAlign.center,
+  //           softWrap: true,
+  //           style: TextStyle(
+  //               fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+  //         ));
+  //
+  //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  //     return;
+  //   }
+  //
+  //   print("Starting user authorization process...");
+  //
+  //   String Username = '';
+  //   String loginUsertype = '';
+  //   String loginUserid = '';
+  //   String userId = '';
+  //
+  //
+  //   try {
+  //     print("Checking phone number: $phoneNumber");
+  //     var value = await db.collection("USERS").where("User_Number", isEqualTo: phoneNumber).get();
+  //
+  //     if (value.docs.isNotEmpty) {
+  //       print("User found");
+  //       for (var element in value.docs) {
+  //         Map<dynamic, dynamic> map = element.data();
+  //         Username = map['User_Name'].toString();
+  //         loginUsertype = map['Type'].toString();
+  //         loginUserid = element.id;
+  //         userId = map["User_Id"].toString();
+  //         if (loginUsertype == "ADMIN") {
+  //           print("Navigating to Admin Home...");
+  //           Navigator.pushReplacement(
+  //             context,
+  //             MaterialPageRoute(builder: (context) => AdminHome()),
+  //           );
+  //         } else {
+  //           print("Navigating to User Home...");
+  //           Navigator.pushReplacement(
+  //             context,
+  //             MaterialPageRoute(builder: (context) => bottomnavigation(userId: '', Username: '',)),
+  //           );
+  //         }
+  //       }
+  //     } else {
+  //       const snackBar = SnackBar(
+  //           backgroundColor: Colors.white,
+  //           duration: Duration(milliseconds: 3000),
+  //           content: Text(
+  //             "Sorry, you don't have any access",
+  //             textAlign: TextAlign.center,
+  //             softWrap: true,
+  //             style: TextStyle(
+  //                 fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+  //           ));
+  //
+  //       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  //     }
+  //   } catch (e) {
+  //     const snackBar = SnackBar(
+  //         backgroundColor: Colors.white,
+  //         duration: Duration(milliseconds: 3000),
+  //         content: Text(
+  //           "Sorry, an error occurred",
+  //           textAlign: TextAlign.center,
+  //           softWrap: true,
+  //           style: TextStyle(
+  //               fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+  //         ));
+  //
+  //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  //     print("Error during user authorization: $e");
+  //   }
+  // }
 
 }

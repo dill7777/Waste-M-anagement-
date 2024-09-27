@@ -22,6 +22,7 @@ import 'USER/myOrders.dart';
 import 'USER/otppage.dart';
 import 'USER/pickup_confirmation.dart';
 import 'USER/proceed_pickup.dart';
+import 'USER/profile.dart';
 import 'USER/reciept.dart';
 import 'USER/signup.dart';
 import 'USER/login.dart';
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => mainProvider()),
+        // ChangeNotifierProvider(create: (_) => mainProvider()),
         ChangeNotifierProvider(create: (context) => mainProvider()),
         ChangeNotifierProvider(create: (context) => LoginProviderNew(),)
       ],
@@ -62,8 +63,9 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: green1),
           useMaterial3: true,
         ),
+        // home: Profile(User_Number: '',User_Name: '',Photo: '',User_Id: '',),
         home: LoginPage(),
-        // home: AdminHome(),jvjgvgj
+        // home: AdminHome(),
       ),
     );
   }
