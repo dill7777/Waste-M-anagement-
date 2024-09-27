@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/mainprovider.dart';
-import 'package:trashbuddy/USER/pickup_confirmation.dart';
 import 'package:trashbuddy/USER/proceed_pickup.dart';
 import '../CONSTANT/widget.dart';
+import '../PROVIDER/mainprovider.dart';
 
 class CalendarPage2 extends StatefulWidget {
   @override
@@ -244,7 +243,7 @@ class _CalendarPageState extends State<CalendarPage2> {
             SizedBox(
               height:1,
             ),
-            Consumer<mainProvider>(
+            Consumer<Mainprovider>(
               builder: (context,value,child) {
                 return InkWell(
                     onTap: () {

@@ -40,7 +40,7 @@ class AddService extends StatelessWidget {
             SizedBox(
               height: 100,
             ),
-            Consumer<mainProvider>(
+            Consumer<Mainprovider>(
               builder: (context,value,child) {
                 return InkWell(
                   onTap: () {
@@ -80,7 +80,7 @@ class AddService extends StatelessWidget {
               height: 15,
             ),
             Center(
-              child: Consumer<mainProvider>(
+              child: Consumer<Mainprovider>(
                   builder: (context,value,child) {
                     return Container(
                       height: height/20,
@@ -109,7 +109,7 @@ class AddService extends StatelessWidget {
               height: 50,
             ),
 
-            Consumer<mainProvider>(
+            Consumer<Mainprovider>(
               builder: (context,value,child) {
                 return InkWell(
                 onTap: () {
@@ -131,7 +131,7 @@ class AddService extends StatelessWidget {
   }
   void showBottomSheet(BuildContext context) {
 
-    mainProvider provider =Provider.of<mainProvider>(context,listen:false);
+    Mainprovider provider =Provider.of<Mainprovider>(context,listen:false);
     showModalBottomSheet(
         elevation: 10,
         backgroundColor: Colors.white,

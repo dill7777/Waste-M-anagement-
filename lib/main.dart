@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/USER/Splashpage.dart';
 
@@ -7,6 +8,7 @@ import 'ADMIN/AdminHome.dart';
 import 'ADMIN/pricelist.dart';
 import 'CONSTANT/Colors.dart';
 import 'PROVIDER/LoginProvidernew.dart';
+import 'PROVIDER/locationProvider.dart';
 import 'PROVIDER/mainprovider.dart';
 import 'USER/Splash2.dart';
 import 'USER/dateandtime.dart';
@@ -26,12 +28,11 @@ import 'USER/profile.dart';
 import 'USER/reciept.dart';
 import 'USER/signup.dart';
 import 'USER/login.dart';
-import 'package:syncfusion_flutter_sliders/sliders.dart';
-import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
+// ... other imports ...
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
 
   await Firebase.initializeApp(
     options: const FirebaseOptions(
@@ -52,21 +53,45 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        // ChangeNotifierProvider(create: (_) => mainProvider()),
-        ChangeNotifierProvider(create: (context) => mainProvider()),
-        ChangeNotifierProvider(create: (context) => LoginProviderNew(),)
+        // ChangeNotifierProvider(create: (context) => Mainprovider()),
+        ChangeNotifierProvider(create: (context) => LoginProviderNew()),
+        ChangeNotifierProvider(create: (context1) => LocationPro()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: green1),
+          colorScheme: ColorScheme.fromSeed(seedColor: Color(0xff033b18)),
           useMaterial3: true,
         ),
         // home: Profile(User_Number: '',User_Name: '',Photo: '',User_Id: '',),
         home: LoginPage(),
-        // home: AdminHome(),
+        // home: AdminHome(),jvjgvgj
       ),
     );
   }
 }
+
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return MultiProvider(
+//       providers: [
+//         ChangeNotifierProvider(create: (_) => mainProvider()),
+//         ChangeNotifierProvider(create: (context) => LoginProviderNew(),),
+//         ChangeNotifierProvider(create: (context) => LocationProvider(),)
+//       ],
+//       child: MaterialApp(
+//         debugShowCheckedModeBanner: false,
+//         title: 'Flutter Demo',
+//         theme: ThemeData(
+//           colorScheme: ColorScheme.fromSeed(seedColor: green1),
+//           useMaterial3: true,
+//         ),
+//         home: LoginPage(),
+//       ),
+//     );
+//   }
+// }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/mainProvider.dart';
 
+import '../PROVIDER/mainProvider.dart';
 import 'login.dart';
 
 class CreateAc extends StatelessWidget {
@@ -11,7 +11,7 @@ class CreateAc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => mainProvider(),
+      create: (_) => Mainprovider(),
       builder: (context, child) {
         return _buildScaffold(context);
       },
@@ -21,7 +21,7 @@ class CreateAc extends StatelessWidget {
   Widget _buildScaffold(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    var provider = Provider.of<mainProvider>(context);
+    var provider = Provider.of<Mainprovider>(context);
 
     Widget btn(Color myColor, String text, Color textmycolor, double width,
         double height, double fonsize, FontWeight fntw) {
@@ -101,7 +101,7 @@ class CreateAc extends StatelessWidget {
               ),
             ),
             SizedBox(height: 50),
-            Consumer<mainProvider>(
+            Consumer<Mainprovider>(
               builder: (context,value,child) {
                 return GestureDetector(
                   onTap: (){

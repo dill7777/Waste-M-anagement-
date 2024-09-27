@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/mainprovider.dart';
-
+import '../PROVIDER/mainProvider.dart';
 import 'addwaste.dart';
 
 class WasteType extends StatelessWidget {
@@ -27,7 +26,7 @@ class WasteType extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: green1,
-      floatingActionButton: Consumer<mainProvider>(
+      floatingActionButton: Consumer<Mainprovider>(
         builder: (context,value,child) {
           return FloatingActionButton(
             shape: CircleBorder(side: BorderSide(color: green5)),
@@ -62,7 +61,7 @@ class WasteType extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            Consumer<mainProvider>(
+            Consumer<Mainprovider>(
               builder: (context,value,child) {
                 return ListView.builder(
                   shrinkWrap: true,

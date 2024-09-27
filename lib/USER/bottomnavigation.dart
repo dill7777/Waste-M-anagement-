@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/mainprovider.dart';
-import 'package:trashbuddy/USER/home.dart';
+ import 'package:trashbuddy/USER/home.dart';
 import 'package:trashbuddy/USER/profile.dart';
 import 'package:trashbuddy/USER/wallet.dart';
 
+import '../PROVIDER/mainprovider.dart';
 import 'collectWaste.dart';
 import 'location.dart';
 
@@ -63,34 +63,42 @@ class _bottomnavigationState extends State<bottomnavigation> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(
+                onPressed: () {
+                  onicontapped(0);
+                },
+                icon: selectedindex == 0
+                    ? Icon(
+                        Icons.home,
+                        color: green2,
+                      )
+                    : Icon(
+                        Icons.home,
+                        color: Color(
+                          0xff747973,
+                        ),
+                      ),
+              ),
+              Consumer<Mainprovider>(builder: (context, value, child) {
+                return IconButton(
                   onPressed: () {
-                    onicontapped(0);
+                    onicontapped(1);
+                    value.getEarnings();
+                    value.getWastePrice();
                   },
-                  icon: selectedindex == 0
+                  icon: selectedindex == 1
                       ? Icon(
-                          Icons.home,
+                          Icons.shopping_cart_rounded,
                           color: green2,
                         )
                       : Icon(
-                          Icons.home,
-                          color: Color(0xff747973),
-                        )),
-              Consumer<mainProvider>(builder: (context, value, child) {
-                return IconButton(
-                    onPressed: () {
-                      onicontapped(1);
-                      value.getEarnings();
-                      value.getWastePrice();
-                    },
-                    icon: selectedindex == 1
-                        ? Icon(
-                            Icons.shopping_cart_rounded,
-                            color: green2,
-                          )
-                        : Icon(Icons.shopping_cart_rounded,
-                            color: Color(0xff747973)));
+                          Icons.shopping_cart_rounded,
+                          color: Color(
+                            0xff747973,
+                          ),
+                        ),
+                );
               }),
-              Consumer<mainProvider>(builder: (context, value, child) {
+              Consumer<Mainprovider>(builder: (context, value, child) {
                 return IconButton(
                     onPressed: () {
                       onicontapped(2);

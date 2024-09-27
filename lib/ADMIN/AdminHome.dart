@@ -10,8 +10,8 @@ import 'package:trashbuddy/ADMIN/services.dart';
 import 'package:trashbuddy/ADMIN/wastetype.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
 import 'package:trashbuddy/CONSTANT/widget.dart';
-import 'package:trashbuddy/PROVIDER/mainprovider.dart';
 
+import '../PROVIDER/mainProvider.dart';
 import 'addpricelist.dart';
 
 class AdminHome extends StatelessWidget {
@@ -93,7 +93,7 @@ class AdminHome extends StatelessWidget {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Customer()));
                       },
                       child: btn3(btn1, "User", white, width/1.25, height/20, 15, FontWeight.w500, "kadwa", )),
-                  Consumer<mainProvider>(
+                  Consumer<Mainprovider>(
                     builder: (context,value,child) {
                       return InkWell(
                           onTap: (){
@@ -104,7 +104,7 @@ class AdminHome extends StatelessWidget {
                     }
                   ),
                   btn3(btn1, "Notification", white, width/1.25, height/20, 15, FontWeight.w500, "kadwa", ),
-                  Consumer<mainProvider>(
+                  Consumer<Mainprovider>(
                     builder: (context,value,child) {
                       return InkWell(
                           onTap: (){
@@ -114,7 +114,7 @@ class AdminHome extends StatelessWidget {
                           child: btn3(btn1, "Waste Type", white, width/1.25, height/20, 15, FontWeight.w500, "kadwa", ));
                     }
                   ),
-                  Consumer<mainProvider>(
+                  Consumer<Mainprovider>(
                     builder: (context,value,child) {
                       return InkWell(
                           onTap: (){
@@ -124,7 +124,7 @@ class AdminHome extends StatelessWidget {
                           child: btn3(btn1, "Earnings", white, width/1.25, height/20, 15, FontWeight.w500, "kadwa", ));
                     }
                   ),
-                  Consumer<mainProvider>(
+                  Consumer<Mainprovider>(
                     builder: (context,value,child) {
                       return InkWell(
                           onTap: (){
@@ -134,7 +134,7 @@ class AdminHome extends StatelessWidget {
                           child: btn3(btn1, "Services", white, width/1.25, height/20, 15, FontWeight.w500, "kadwa", ));
                     }
                   ),
-                  Consumer<mainProvider>(
+                  Consumer<Mainprovider>(
                     builder: (context,value,child) {
                       return InkWell(
                           onTap: () {

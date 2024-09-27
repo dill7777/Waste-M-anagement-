@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/mainprovider.dart';
+
+import '../PROVIDER/mainprovider.dart';
 
 class HomePage extends StatelessWidget {
    HomePage({super.key});
@@ -23,7 +24,7 @@ List <String> item = [
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<mainProvider>(context, listen: false).getCategory();
+      Provider.of<Mainprovider>(context, listen: false).getCategory();
     });
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
@@ -163,7 +164,7 @@ List <String> item = [
             SizedBox(
               height: 100,
               width: width,
-              child: Consumer<mainProvider>(
+              child: Consumer<Mainprovider>(
                   builder: (context, value, child) {
                     return ListView.builder(
                         shrinkWrap: true,

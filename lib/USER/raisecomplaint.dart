@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/mainprovider.dart';
 import 'package:trashbuddy/USER/uploadpic.dart';
 
 import '../CONSTANT/widget.dart';
+import '../PROVIDER/mainprovider.dart';
 import 'instruction.dart';
 
 class RaiseComplaint extends StatelessWidget {
@@ -57,7 +57,7 @@ class RaiseComplaint extends StatelessWidget {
               //       },
               //       child: btn(Color(0xff419e3f), "  Take a Picture", white, 220, 40, 15, FontWeight.w500,"kadwa",Icons.camera_alt)),
               // ),
-              Consumer<mainProvider>(
+              Consumer<Mainprovider>(
                 builder: (context,value,child) {
                   return InkWell(
                       onTap: (){

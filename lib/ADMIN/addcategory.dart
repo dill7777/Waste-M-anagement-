@@ -5,6 +5,7 @@ import 'package:trashbuddy/CONSTANT/widget.dart';
 
 import '../PROVIDER/mainprovider.dart';
 
+
 class AddCategory extends StatelessWidget {
   String from;
   String oldid;
@@ -43,7 +44,7 @@ class AddCategory extends StatelessWidget {
             SizedBox(
               height: 100,
             ),
-            Consumer<mainProvider>(
+            Consumer<Mainprovider>(
               builder: (context,value,child) {
                 return InkWell(onTap: () {
                   showBottomSheet(context);
@@ -82,7 +83,7 @@ class AddCategory extends StatelessWidget {
               height: 15,
             ),
             Center(
-              child: Consumer<mainProvider>(
+              child: Consumer<Mainprovider>(
                 builder: (context,value,child) {
                   return Container(
                     height: height/20,
@@ -112,7 +113,7 @@ class AddCategory extends StatelessWidget {
               height: 50,
             ),
 
-            Center(child: Consumer<mainProvider>(
+            Center(child: Consumer<Mainprovider>(
         
               builder: (context,value,child) {
                 return InkWell(
@@ -135,7 +136,7 @@ class AddCategory extends StatelessWidget {
   }
   void showBottomSheet(BuildContext context) {
 
-    mainProvider provider =Provider.of<mainProvider>(context,listen:false);
+    Mainprovider provider =Provider.of<Mainprovider>(context,listen:false);
     showModalBottomSheet(
         elevation: 10,
         backgroundColor: Colors.white,

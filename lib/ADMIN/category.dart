@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/ADMIN/addcategory.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/mainprovider.dart';
+
+import '../PROVIDER/mainProvider.dart';
 
 class Category extends StatelessWidget {
 
@@ -17,7 +18,7 @@ class Category extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: green1,
-      floatingActionButton: Consumer<mainProvider>(
+      floatingActionButton: Consumer<Mainprovider>(
         builder: (context,value,child) {
           return FloatingActionButton(
             shape: CircleBorder(side: BorderSide(color: green5)),
@@ -54,7 +55,7 @@ class Category extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Consumer<mainProvider>(
+            Consumer<Mainprovider>(
               builder: (context,value,child) {
                 return GridView.builder(
                   padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),

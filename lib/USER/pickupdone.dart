@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/mainprovider.dart';
-import 'package:trashbuddy/USER/collectWaste.dart';
-import 'package:trashbuddy/USER/status.dart';
+ import 'package:trashbuddy/USER/status.dart';
+
+import '../PROVIDER/mainprovider.dart';
 
 class PickupDone extends StatelessWidget {
   const PickupDone({super.key, required List<double> prices, required List<String> selectedItems, required List<double> kgValue, required String selectedTime, required String selectedDate});
@@ -97,7 +97,7 @@ class PickupDone extends StatelessWidget {
                   ],
                 ),
                 SizedBox(width: 10,),
-                Consumer<mainProvider>(
+                Consumer<Mainprovider>(
                   builder: (context,value,child) {
                     return InkWell(
                       onTap: () {

@@ -89,7 +89,7 @@ class Profile extends StatelessWidget {
             // ),
             Padding(
               padding: EdgeInsets.all(10),
-              child: Consumer<mainProvider>(
+              child: Consumer<Mainprovider>(
                   builder: (context, value, child) {
                     return Column(
                       children: [
@@ -303,7 +303,7 @@ class Profile extends StatelessWidget {
   }
 
   void showBottomSheet(BuildContext context, int index) {
-    mainProvider provider = Provider.of<mainProvider>(context, listen: false);
+   final  provider = Provider.of<Mainprovider>(context, listen: false);
     showModalBottomSheet(
       elevation: 10,
       backgroundColor: Colors.white,
