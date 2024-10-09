@@ -8,8 +8,25 @@ import 'ADMIN/AdminHome.dart';
 import 'ADMIN/pricelist.dart';
 import 'CONSTANT/Colors.dart';
 import 'PROVIDER/LoginProvidernew.dart';
-import 'PROVIDER/locationProvider.dart';
+import 'PROVIDER/locationPro.dart';
 import 'PROVIDER/mainprovider.dart';
+import 'USER/Splash2.dart';
+import 'USER/dateandtime.dart';
+import 'USER/binlocation.dart';
+import 'USER/bottomnavigation.dart';
+// import 'USER/dateandtime.dart';
+import 'USER/collectWaste.dart';
+import 'USER/devicelocation.dart';
+import 'USER/dustbinlocation.dart';
+import 'USER/home.dart';
+import 'USER/location.dart';
+import 'USER/myOrders.dart';
+import 'USER/otppage.dart';
+import 'USER/pickup_confirmation.dart';
+import 'USER/proceed_pickup.dart';
+import 'USER/profile.dart';
+import 'USER/reciept.dart';
+import 'USER/signup.dart';
 import 'USER/login.dart';
 // ... other imports ...
 
@@ -33,6 +50,9 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
+
+
+
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
@@ -48,7 +68,9 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Color(0xff033b18)),
           useMaterial3: true,
         ),
-        home: LoginPage(),
+        // home: Profile(User_Number: '',User_Name: '',Photo: '',User_Id: '',),
+        // home: LoginPage(),
+        home: AdminHome(),
       ),
     );
   }

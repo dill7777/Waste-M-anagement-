@@ -4,11 +4,34 @@ import 'package:trashbuddy/CONSTANT/Colors.dart';
 import 'package:trashbuddy/USER/pickup_confirmation.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
-import '../PROVIDER/locationProvider.dart';
+import '../PROVIDER/locationPro.dart';
 import '../PROVIDER/mainprovider.dart';
 
-class ProceedPickup extends StatelessWidget {
-  ProceedPickup({Key? key}) : super(key: key);
+
+class ProceedPickup extends StatefulWidget {
+  String aptNumber;
+  String streetController;
+  ProceedPickup({super.key,required this.aptNumber,required this.streetController});
+
+  @override
+  _ProceedPickupState createState() => _ProceedPickupState();
+}
+
+class _ProceedPickupState extends State<ProceedPickup> {
+
+  SfRangeValues _values = SfRangeValues(20.0, 50.0);
+  List<int> _selectedIndices = [];
+  List<String> _garbage = [
+    "Cloths",
+    "Wool",
+    "E-waste",
+    "Metal",
+    "Food waste",
+    "Plastic",
+    "Glass",
+    "Books and Paper",
+  ];
+  List<double> _weights = List.filled(8, 0.0); // List to store weights for each item
 
   Widget btn(Color myColor, String text, Color textmycolor, double width, double height, double fontsize, FontWeight fontWeight, String fontFamily) {
     return Padding(
@@ -138,7 +161,7 @@ class ProceedPickup extends StatelessWidget {
                   return Padding(
                     padding: EdgeInsets.all(10.0),
                     child: Text(
-                      "Home\n${locationService.aptNumber}\n${locationService.streetController}",
+                      "Home\n"+widget.aptNumber+widget.streetController,
                       style: const TextStyle(fontFamily: "kadwa", fontSize: 14),
                     ),
                   );
@@ -176,7 +199,7 @@ class ProceedPickup extends StatelessWidget {
                               kgValue: mainPro.selectedIndices.map((index) => mainPro.weights[index]).toList(),
                               selectedItems: mainPro.selectedIndices.map((index) => mainPro.wastepricelist[index].Name).toList(),
                               prices: mainPro.selectedIndices.map((index) => mainPro.weights[index] * double.parse(mainPro.wastepricelist[index].Price)).toList(),
-                              totalPrice: totalPrice,
+                              totalPrice: totalPrice,aptNumber: widget.aptNumber, streetController: widget.streetController,
                             ),
                           ),
                         );

@@ -349,6 +349,8 @@
 //
 //
 //
+
+import 'package:trashbuddy/PROVIDER/mainprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
@@ -356,7 +358,7 @@ import 'package:trashbuddy/CONSTANT/Colors.dart';
 import 'package:trashbuddy/USER/dustbinlocation.dart';
 import 'package:trashbuddy/USER/location.dart';
 
-import '../PROVIDER/LocationProvider.dart';
+import '../PROVIDER/locationPro.dart';
 import '../PROVIDER/mainprovider.dart';
 
 class CollectWaste extends StatelessWidget {

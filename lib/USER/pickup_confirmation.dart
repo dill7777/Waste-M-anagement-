@@ -481,10 +481,12 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
- import 'package:trashbuddy/USER/pickupdone.dart';
+import 'package:trashbuddy/PROVIDER/mainprovider.dart';
+import 'package:trashbuddy/USER/pickupdone.dart';
 import 'package:trashbuddy/USER/raisecomplaint.dart';
  import 'package:trashbuddy/CONSTANT/widget.dart';
 
@@ -496,6 +498,8 @@ class PickupConfirmation extends StatefulWidget {
   final List<String> selectedItems;
   final List<double> prices;
   final double totalPrice;
+  String aptNumber;
+  String streetController;
 
   PickupConfirmation({
     Key? key,
@@ -503,6 +507,8 @@ class PickupConfirmation extends StatefulWidget {
     required this.prices,
     required this.selectedItems,
     required this.totalPrice,
+    required this.aptNumber,
+    required this.streetController
   }) : super(key: key);
 
   @override
@@ -621,15 +627,10 @@ class _PickupConfirmationState extends State<PickupConfirmation> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 10, top: 15),
-              child:
-
-                                 Text("kksk"
-                                     ""
-                                  // "Home\n${locationPro.aptNumber}\n${locationPro.streetController}",
-                                  // style: TextStyle(fontFamily: "kadwa", fontSize: 15),
-                                ),
-
-
+              child: Text(
+                "Home\nHouse no 10, Kolasseri colony Perinthalmanna\nMalappuram 656565",
+                style: TextStyle(fontFamily: "kadwa", fontSize: 15),
+              ),
             ),
             SizedBox(height: 15),
             Divider(height: 2, color: line, thickness: 3),
@@ -641,8 +642,10 @@ class _PickupConfirmationState extends State<PickupConfirmation> {
                 style: TextStyle(fontSize: 18, fontFamily: "kadwa", fontWeight: FontWeight.w500),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10, top: 10),
+            Consumer<Mainprovider>(
+              builder: (context,value,child) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 1, top: 5),
               child: Row(
                 children: [
                   ElevatedButton(
@@ -680,7 +683,8 @@ class _PickupConfirmationState extends State<PickupConfirmation> {
                     },
                   ),
                 ],
-              ),
+              ),);
+              }
             ),
             Center(
               child: Padding(

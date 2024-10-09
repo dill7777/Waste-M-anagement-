@@ -4,14 +4,24 @@ import 'package:trashbuddy/CONSTANT/Colors.dart';
  import 'package:trashbuddy/USER/home.dart';
 import 'package:trashbuddy/USER/profile.dart';
 import 'package:trashbuddy/USER/wallet.dart';
+import 'package:trashbuddy/PROVIDER/mainprovider.dart';
 
-import '../PROVIDER/mainprovider.dart';
+
+// import '../PROVIDER/mainprovider.dart';
 import 'collectWaste.dart';
 import 'location.dart';
 
 class bottomnavigation extends StatefulWidget {
   String userId;
-  bottomnavigation({super.key, required this.userId});
+  String Username;
+  String Usernumber;
+  String loginphno;
+  bottomnavigation(
+      {super.key,
+      required this.userId,
+      required this.Username,
+      required this.Usernumber,
+      required this.loginphno});
 
   @override
   State<bottomnavigation> createState() => _bottomnavigationState();
@@ -33,11 +43,11 @@ class _bottomnavigationState extends State<bottomnavigation> {
       CollectWaste(),
       Wallet(),
       Profile(
-        User_Id: '',
-        Photo: '',
-        User_Name: '',
-        User_Number: '',
+        User_Id: widget.userId,
+        User_Name: widget.Username,
+        User_Number: widget.Usernumber,
       ),
+      // Profile(User_Id: '', Photo: '', User_Name: '', User_Number: '',),
     ];
     return Scaffold(
       extendBody: true,

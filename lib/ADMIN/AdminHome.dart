@@ -11,7 +11,7 @@ import 'package:trashbuddy/ADMIN/wastetype.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
 import 'package:trashbuddy/CONSTANT/widget.dart';
 
-import '../PROVIDER/mainProvider.dart';
+import '../PROVIDER/mainprovider.dart';
 import 'addpricelist.dart';
 
 class AdminHome extends StatelessWidget {

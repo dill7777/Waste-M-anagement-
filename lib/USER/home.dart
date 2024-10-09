@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
+import 'package:trashbuddy/PROVIDER/mainprovider.dart';
 
-import '../PROVIDER/mainprovider.dart';
+// import '../PROVIDER/mainprovider.dart';
 
 class HomePage extends StatelessWidget {
    HomePage({super.key});

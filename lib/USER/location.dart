@@ -227,6 +227,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
@@ -234,7 +235,7 @@ import 'package:trashbuddy/CONSTANT/widget.dart';
 import 'package:trashbuddy/PROVIDER/mainProvider.dart';
 import 'package:trashbuddy/USER/proceed_pickup.dart';
 
-import '../PROVIDER/locationProvider.dart';
+import '../PROVIDER/locationPro.dart';
 
 class LocationPage extends StatelessWidget {
   const LocationPage({Key? key}) : super(key: key);
@@ -392,7 +393,7 @@ class LocationPage extends StatelessWidget {
                       ),
                     ),
 
-                    AddText(context, "Apt, House number", controller: locationService.aptController),
+                          AddText(context, "Apt, House number", controller: locationService.aptController),
                     AddText(context, "Street name", controller: locationService.streetController),
 
 
@@ -412,7 +413,7 @@ class LocationPage extends StatelessWidget {
                               onTap: () {
                                 print('Apt, House number: ${locationService.aptController.text}');
                                 print('Street name: ${locationService.streetController.text}');
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>ProceedPickup()));
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>ProceedPickup(aptNumber: locationService.aptController.text, streetController: locationService.streetController.text,)));
 
                               },
                             ),
