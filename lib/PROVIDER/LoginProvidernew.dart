@@ -11,7 +11,6 @@ import 'package:trashbuddy/ADMIN/AdminHome.dart';
 import 'package:trashbuddy/USER/otppage.dart';
 
 import '../USER/Bottomnavigation.dart';
-import 'mainProvider.dart';
 
 class LoginProviderNew extends ChangeNotifier {
 
@@ -116,7 +115,6 @@ class LoginProviderNew extends ChangeNotifier {
     String productid='';
     String userId='';
     String loginphno="";
-    mainProvider MainProv = Provider.of<mainProvider>(context, listen: false);
 
     try {
       var phone = phoneNumber!;

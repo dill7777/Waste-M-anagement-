@@ -4,12 +4,14 @@ import 'package:trashbuddy/CONSTANT/Colors.dart';
  import 'package:trashbuddy/USER/pickup_confirmation.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
- import '../PROVIDER/locationProvider.dart';
+ import '../PROVIDER/locationPro.dart';
 import '../PROVIDER/mainprovider.dart';
 
 
 class ProceedPickup extends StatefulWidget {
-  ProceedPickup({super.key});
+  String aptNumber;
+  String streetController;
+  ProceedPickup({super.key,required this.aptNumber,required this.streetController});
 
   @override
   _ProceedPickupState createState() => _ProceedPickupState();
@@ -172,7 +174,7 @@ class _ProceedPickupState extends State<ProceedPickup> {
                         padding:  EdgeInsets.all(10.0),
                         child:  Text(
 
-                               "Home\n${locationService.aptNumber}\n${locationService.streetController}",
+                               "Home\n"+widget.aptNumber+widget.streetController,
                                style: const TextStyle(fontFamily: "kadwa", fontSize: 14),
                             ),
 
@@ -214,7 +216,7 @@ class _ProceedPickupState extends State<ProceedPickup> {
                                 kgValue: _selectedIndices.map((index) => _weights[index]).toList(),
                                 selectedItems: _selectedIndices.map((index) => mainPro.wastepricelist[index].Name).toList(),
                                 prices: _selectedIndices.map((index) => _weights[index] * double.parse(mainPro.wastepricelist[index].Price)).toList(),
-                                totalPrice: totalPrice,
+                                totalPrice: totalPrice, aptNumber: widget.aptNumber, streetController: widget.streetController,
 
                               ),
                             ),

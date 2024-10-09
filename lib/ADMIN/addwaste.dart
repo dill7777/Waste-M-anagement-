@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
 
 import '../CONSTANT/widget.dart';
-import '../PROVIDER/mainProvider.dart';
+import '../PROVIDER/mainprovider.dart';
 
 class AddWaste extends StatelessWidget {
   String from;

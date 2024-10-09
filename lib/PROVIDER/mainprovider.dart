@@ -1161,7 +1161,7 @@ class Mainprovider extends ChangeNotifier {
 
   Future<void> getProfileModel() async {
     try {
-      final value = await db.collection("USERS").get();
+      final value = await db.collection("USERPROFILE").get();
       profilelist.clear();
       if (value.docs.isNotEmpty) {
         for (var element in value.docs) {
@@ -1207,8 +1207,65 @@ class Mainprovider extends ChangeNotifier {
     });
     notifyListeners();
   }
+// ___________________________________Address____________________________________________________________
 
+  TextEditingController addressCt = TextEditingController();
 
+  Future<void> addAddress(String from, String oldid) async {
+    String id = DateTime.now().microsecondsSinceEpoch.toString();
+    Map<String, dynamic> addmap = HashMap();
+    addmap["APARTMENT"] = wastetypeCt.text;
+    addmap["STREET_NAME"] = wastetypeCt.text;
+    if (from == "NEW") {
+      addmap["ADDRESS_ID"] = id;
+    }
+    if (from == "EDIT") {
+      db.collection("ADDRESS").doc(oldid).update(addmap);
+    } else {
+      db.collection("ADDRESS").doc(id).set(addmap);
+    }
+  }
+
+  List<AddressModel> addresslist = [];
+
+  void getAddress() {
+    db.collection("ADDRESS").get().then((value) {
+      if (value.docs.isNotEmpty) {
+        addresslist.clear();
+        for (var element in value.docs) {
+          addresslist.add(
+              AddressModel(element.id,
+                  element.get("Apartment").toString(),
+                  element.get("Street_Name").toString(),
+              ));
+        }
+      }
+    });
+    notifyListeners();
+  }
+
+  void clearAddress() {
+    addressCt.clear();
+  }
+
+  void EditAddress(String id) {
+    db.collection("APARTMENT").doc(id).get().then((value) {
+      if (value.exists) {
+        Map<dynamic, dynamic> map = value.data() as Map;
+        addressCt.text = map["APARTMENT"].toString();
+        getWasteType();
+        notifyListeners();
+      }
+    });
+    notifyListeners();
+  }
+
+  void DeleteAddress(id, BuildContext context) {
+    db.collection("ADDRESS").doc(id).delete();
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text("Delete Succesfully"),
+    ));
+  }
 
 
 }

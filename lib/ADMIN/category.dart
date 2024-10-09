@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:trashbuddy/ADMIN/addcategory.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
 
-import '../PROVIDER/mainProvider.dart';
+import '../PROVIDER/mainprovider.dart';
 
 class Category extends StatelessWidget {
 

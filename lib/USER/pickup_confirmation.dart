@@ -483,9 +483,11 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
+import 'package:trashbuddy/PROVIDER/locationPro.dart';
 import 'package:trashbuddy/PROVIDER/mainprovider.dart';
 import 'package:trashbuddy/USER/pickupdone.dart';
 import 'package:trashbuddy/USER/raisecomplaint.dart';
@@ -497,6 +499,8 @@ class PickupConfirmation extends StatefulWidget {
   final List<String> selectedItems;
   final List<double> prices;
   final double totalPrice;
+  String aptNumber;
+  String streetController;
 
   PickupConfirmation({
     Key? key,
@@ -504,6 +508,8 @@ class PickupConfirmation extends StatefulWidget {
     required this.prices,
     required this.selectedItems,
     required this.totalPrice,
+    required this.aptNumber,
+    required this.streetController
   }) : super(key: key);
 
   @override
@@ -620,9 +626,14 @@ class _PickupConfirmationState extends State<PickupConfirmation> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 10, top: 15),
-              child: Text(
-                "Home\nHouse no 10, Kolasseri colony Perinthalmanna\nMalappuram 656565",
-                style: TextStyle(fontFamily: "kadwa", fontSize: 15),
+              child: Consumer<LocationPro>(
+                builder: (context,locationService,child) {
+                  return Text(
+                    "Home\n"+widget.aptNumber+widget.streetController,
+                    // "Home\nHouse no 10, Kolasseri colony Perinthalmanna\nMalappuram 656565",
+                    style: TextStyle(fontFamily: "kadwa", fontSize: 15),
+                  );
+                }
               ),
             ),
             SizedBox(height: 15),
@@ -635,45 +646,49 @@ class _PickupConfirmationState extends State<PickupConfirmation> {
                 style: TextStyle(fontSize: 18, fontFamily: "kadwa", fontWeight: FontWeight.w500),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10, top: 10),
-              child: Row(
-                children: [
-                  ElevatedButton(
-                    child: Text(_selectedDay == null ? 'Select Date' : DateFormat('EEEE, MMMM d, y').format(_selectedDay!)),
-                    onPressed: () async {
-                      final DateTime? date = await showDatePicker(
-                        context: context,
-                        initialDate: _focusedDay,
-                        firstDate: DateTime.now(),
-                        lastDate: DateTime.now().add(Duration(days: 365)),
-                      );
-                      if (date != null) {
-                        setState(() {
-                          _selectedDay = date;
-                          _focusedDay = date;
-                          _selectedDateString = DateFormat('EEEE, MMMM d, y').format(date);
-                        });
-                      }
-                    },
+            Consumer<Mainprovider>(
+              builder: (context,value,child) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 1, top: 5),
+                  child: Row(
+                    children: [
+                      ElevatedButton(
+                        child: Text(_selectedDay == null ? 'Select Date' : DateFormat('EEEE, MMMM d, y').format(_selectedDay!)),
+                        onPressed: () async {
+                          final DateTime? date = await showDatePicker(
+                            context: context,
+                            initialDate: _focusedDay,
+                            firstDate: DateTime.now(),
+                            lastDate: DateTime.now().add(Duration(days: 365)),
+                          );
+                          if (date != null) {
+                            setState(() {
+                              _selectedDay = date;
+                              _focusedDay = date;
+                              _selectedDateString = DateFormat('EEEE, MMMM d, y').format(date);
+                            });
+                          }
+                        },
+                      ),
+                      SizedBox(width: 10),
+                      ElevatedButton(
+                        child: Text(_selectedTime == null ? 'Select Time' : _selectedTime!.format(context)),
+                        onPressed: () async {
+                          final TimeOfDay? time = await showTimePicker(
+                            context: context,
+                            initialTime: TimeOfDay.now(),
+                          );
+                          if (time != null) {
+                            setState(() {
+                              _selectedTime = time;
+                            });
+                          }
+                        },
+                      ),
+                    ],
                   ),
-                  SizedBox(width: 10),
-                  ElevatedButton(
-                    child: Text(_selectedTime == null ? 'Select Time' : _selectedTime!.format(context)),
-                    onPressed: () async {
-                      final TimeOfDay? time = await showTimePicker(
-                        context: context,
-                        initialTime: TimeOfDay.now(),
-                      );
-                      if (time != null) {
-                        setState(() {
-                          _selectedTime = time;
-                        });
-                      }
-                    },
-                  ),
-                ],
-              ),
+                );
+              }
             ),
             Center(
               child: Padding(

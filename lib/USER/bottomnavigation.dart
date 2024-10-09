@@ -4,8 +4,10 @@ import 'package:trashbuddy/CONSTANT/Colors.dart';
  import 'package:trashbuddy/USER/home.dart';
 import 'package:trashbuddy/USER/profile.dart';
 import 'package:trashbuddy/USER/wallet.dart';
+import 'package:trashbuddy/PROVIDER/mainprovider.dart';
 
-import '../PROVIDER/mainprovider.dart';
+
+// import '../PROVIDER/mainprovider.dart';
 import 'collectWaste.dart';
 import 'location.dart';
 

@@ -8,7 +8,7 @@ import 'ADMIN/AdminHome.dart';
 import 'ADMIN/pricelist.dart';
 import 'CONSTANT/Colors.dart';
 import 'PROVIDER/LoginProvidernew.dart';
-import 'PROVIDER/locationProvider.dart';
+import 'PROVIDER/locationPro.dart';
 import 'PROVIDER/mainprovider.dart';
 import 'USER/Splash2.dart';
 import 'USER/dateandtime.dart';
@@ -50,10 +50,13 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
+
+
+
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        // ChangeNotifierProvider(create: (context) => Mainprovider()),
+        ChangeNotifierProvider(create: (context) => Mainprovider()),
         ChangeNotifierProvider(create: (context) => LoginProviderNew()),
         ChangeNotifierProvider(create: (context1) => LocationPro()),
       ],
@@ -64,8 +67,8 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         // home: Profile(User_Number: '',User_Name: '',Photo: '',User_Id: '',),
-        home: LoginPage(),
-        // home: AdminHome(),jvjgvgj
+        // home: LoginPage(),
+        home: AdminHome(),
       ),
     );
   }

@@ -1,6 +1,8 @@
 
 import 'dart:ffi';
 
+import 'package:trashbuddy/USER/Address.dart';
+
 class CategoryModel {
   String id;
   String Photo;
@@ -59,6 +61,20 @@ class ProfileModel {
   String User_Number;
   ProfileModel(this.User_Id,this.Photo,this.User_Name,this.User_Number);
 
+}
+
+class AddressModel {
+  String id;
+  String Apartment;
+  String Street_Name;
+  AddressModel(this.id,this.Apartment,this.Street_Name);
+}
+
+class UsDetails {
+  String id;
+  String Name;
+  String Number;
+  UsDetails(this.id,this.Name,this.Number);
 }
 
 

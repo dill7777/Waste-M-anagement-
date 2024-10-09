@@ -63,7 +63,10 @@ class Myorders extends StatelessWidget {
                           SizedBox(height: 20,),
                           Row(
                             children: [
-                              Image(image: AssetImage(Oimg[index]),height: 100,),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image(image: AssetImage(Oimg[index]),height: 100,),
+                              ),
                               SizedBox(width: 10,),
                               Column(
                                 children: [
