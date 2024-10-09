@@ -578,6 +578,7 @@ class _PickupConfirmationState extends State<PickupConfirmation> {
                           ],
                         ),
                         Column(
+
                           children: [
                             Text("${widget.prices[index].toStringAsFixed(2)} ₹", style: TextStyle(fontSize: 18)),
                           ],
