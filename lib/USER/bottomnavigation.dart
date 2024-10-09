@@ -12,10 +12,12 @@ import 'collectWaste.dart';
 import 'location.dart';
 
 class bottomnavigation extends StatefulWidget {
+
   String userId;
+  String loginphno;
   String Username;
   String Usernumber;
-  String loginphno;
+
   bottomnavigation(
       {super.key,
       required this.userId,
