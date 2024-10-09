@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
+import 'package:trashbuddy/PROVIDER/LocationProvider.dart';
  import 'package:trashbuddy/USER/status.dart';
 
 import '../PROVIDER/mainprovider.dart';
@@ -13,6 +14,7 @@ class PickupDone extends StatelessWidget {
 
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
+
 
     Widget btn(Color myColor, String text, Color textmycolor, double width,double height,double fonsize,FontWeight fntw,String fontFamily ) {
       return Padding(

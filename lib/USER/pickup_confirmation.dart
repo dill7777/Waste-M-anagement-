@@ -1,9 +1,7 @@
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
-// import 'package:trashbuddy/CONSTANT/Colors.dart';
+ // import 'package:trashbuddy/CONSTANT/Colors.dart';
 // import 'package:trashbuddy/MODELCLASS/modelclass.dart';
-// import 'package:trashbuddy/PROVIDER/mainprovider.dart';
 // import 'package:trashbuddy/USER/pickupdone.dart';
 // import 'package:trashbuddy/USER/raisecomplaint.dart';
 // import 'package:trashbuddy/USER/reciept.dart';
@@ -483,14 +481,15 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/mainprovider.dart';
-import 'package:trashbuddy/USER/pickupdone.dart';
+ import 'package:trashbuddy/USER/pickupdone.dart';
 import 'package:trashbuddy/USER/raisecomplaint.dart';
-import 'package:trashbuddy/USER/reciept.dart';
-import 'package:trashbuddy/CONSTANT/widget.dart';
+ import 'package:trashbuddy/CONSTANT/widget.dart';
+
+import '../PROVIDER/LocationProvider.dart';
+
 
 class PickupConfirmation extends StatefulWidget {
   final List<double> kgValue;
@@ -520,6 +519,7 @@ class _PickupConfirmationState extends State<PickupConfirmation> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
+    // final locationPro = Provider.of<LocationPro>(context);
 
     double totalCost = widget.prices.reduce((a, b) => a + b);
 
@@ -620,10 +620,15 @@ class _PickupConfirmationState extends State<PickupConfirmation> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 10, top: 15),
-              child: Text(
-                "Home\nHouse no 10, Kolasseri colony Perinthalmanna\nMalappuram 656565",
-                style: TextStyle(fontFamily: "kadwa", fontSize: 15),
-              ),
+              child:
+
+                                 Text("kksk"
+                                     ""
+                                  // "Home\n${locationPro.aptNumber}\n${locationPro.streetController}",
+                                  // style: TextStyle(fontFamily: "kadwa", fontSize: 15),
+                                ),
+
+
             ),
             SizedBox(height: 15),
             Divider(height: 2, color: line, thickness: 3),
@@ -645,6 +650,7 @@ class _PickupConfirmationState extends State<PickupConfirmation> {
                       final DateTime? date = await showDatePicker(
                         context: context,
                         initialDate: _focusedDay,
+
                         firstDate: DateTime.now(),
                         lastDate: DateTime.now().add(Duration(days: 365)),
                       );

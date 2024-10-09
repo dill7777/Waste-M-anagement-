@@ -1,15 +1,13 @@
-import 'dart:collection';
+ import 'dart:collection';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
+
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trashbuddy/USER/profile.dart';
+
 import 'package:url_launcher/url_launcher.dart';
  import '../MODELCLASS/modelclass.dart';
 import '../MODELCLASS/usermodels.dart';
@@ -19,6 +17,26 @@ class Mainprovider extends ChangeNotifier {
   Reference ref = FirebaseStorage.instance.ref("IMAGE URL");
   Reference imgstr = FirebaseStorage.instance.ref("Images");
 
+/// proceed pickup indices
+  List<int> _selectedIndices = [];
+  List<double> _weights = List.filled(8, 0.0);
+
+  List<int> get selectedIndices => _selectedIndices;
+  List<double> get weights => _weights;
+
+  void toggleSelectedIndex(int index) {
+    if (_selectedIndices.contains(index)) {
+      _selectedIndices.remove(index);
+    } else {
+      _selectedIndices.add(index);
+    }
+    notifyListeners();
+  }
+
+  void updateWeight(int index, double weight) {
+    _weights[index] = weight;
+    notifyListeners();
+  }
 
 
 
