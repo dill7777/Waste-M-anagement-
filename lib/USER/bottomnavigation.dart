@@ -7,29 +7,28 @@ import 'package:trashbuddy/USER/wallet.dart';
 import 'package:trashbuddy/PROVIDER/mainprovider.dart';
 
 
-// import '../PROVIDER/mainprovider.dart';
-import 'collectWaste.dart';
-import 'location.dart';
+ import 'collectWaste.dart';
 
-class bottomnavigation extends StatefulWidget {
+class BottomNavigation extends StatefulWidget {
+  final String userId;
+  final String username;
+  final String userNumber;  // Changed from Usernumber to userNumber
+  final String loginPhno;
 
-  String userId;
-  String loginphno;
-  String Username;
-  String Usernumber;
+  const BottomNavigation({
+    Key? key,
+    required this.userId,
+    required this.username,
+    required this.userNumber,  // Changed from Usernumber to userNumber
+    required this.loginPhno,
+  }) : super(key: key);
 
-  bottomnavigation(
-      {super.key,
-      required this.userId,
-      required this.Username,
-      required this.Usernumber,
-      required this.loginphno});
 
   @override
-  State<bottomnavigation> createState() => _bottomnavigationState();
+  State<BottomNavigation> createState() => _bottomNavigationState();
 }
 
-class _bottomnavigationState extends State<bottomnavigation> {
+class _bottomNavigationState extends State<BottomNavigation> {
   int selectedindex = 0;
   void onicontapped(int index) {
     setState(() {
@@ -45,9 +44,9 @@ class _bottomnavigationState extends State<bottomnavigation> {
       CollectWaste(),
       Wallet(),
       Profile(
-        User_Id: widget.userId,
-        User_Name: widget.Username,
-        User_Number: widget.Usernumber,
+        userId: widget.userId,
+        userName: widget.username,
+        userNumber: widget.userNumber,
       ),
       // Profile(User_Id: '', Photo: '', User_Name: '', User_Number: '',),
     ];

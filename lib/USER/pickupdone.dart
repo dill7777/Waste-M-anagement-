@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/PROVIDER/LocationProvider.dart';
- import 'package:trashbuddy/USER/status.dart';
+  import 'package:trashbuddy/USER/status.dart';
 
 import '../PROVIDER/mainprovider.dart';
 

@@ -5,11 +5,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:trashbuddy/ADMIN/AdminHome.dart';
+ import 'package:trashbuddy/ADMIN/AdminHome.dart';
 import 'package:trashbuddy/USER/otppage.dart';
 
-import '../USER/Bottomnavigation.dart';
+ import '../USER/bottomnavigation.dart';
 
 class LoginProviderNew extends ChangeNotifier {
   TextEditingController Loginphnnumber = TextEditingController();
@@ -137,15 +136,14 @@ class LoginProviderNew extends ChangeNotifier {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => bottomnavigation(
+                  builder: (context) => BottomNavigation(
                     userId: uid,
-                    loginphno: loginphno,
-                    Username: loginUsername,
-                    Usernumber: '',
+                    username: loginUsername,
+                    userNumber: '',
+                    loginPhno: '',
                   ),
                 ),
               );
-
               // db.collection("CUSTOMERS").doc(element.id).get().then((valueee){
               //   if(valueee.exists){
               //     print("cxcjjjc"+valueee.id);

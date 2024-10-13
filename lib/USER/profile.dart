@@ -348,13 +348,17 @@ import 'login.dart';
 // }
 
 
-
 class Profile extends StatelessWidget {
-  String User_Id;
-  String User_Name;
-  String User_Number;
+  final String userId;
+  final String userName;
+  final String userNumber;
 
-  Profile({super.key, required this.User_Id, required this.User_Name, required this.User_Number});
+  const Profile({
+    Key? key,
+    required this.userId,
+    required this.userName,
+    required this.userNumber,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -422,21 +426,21 @@ class Profile extends StatelessWidget {
                         value.profileFileImg != null
                             ? TextButton(
                             onPressed: () {
-                              value.addProfile(User_Name, User_Number);
+                              value.addProfile(userName, userNumber);
                             },
                             child: Text("Done"))
                             : Center(
                           child: Column(
                             children: [
                               Text(
-                                User_Name,
+                                userName,
                                 style: TextStyle(
                                     color: green2,
                                     fontSize: 20,
                                     fontWeight: FontWeight.w500),
                               ),
                               Text(
-                                User_Number,
+                                userNumber,
                                 style: TextStyle(
                                     color: green2,
                                     fontSize: 20,

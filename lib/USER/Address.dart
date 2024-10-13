@@ -4,7 +4,7 @@ import 'package:trashbuddy/CONSTANT/Colors.dart';
 import 'package:trashbuddy/CONSTANT/widget.dart';
 
 import '../PROVIDER/mainprovider.dart';
-import 'bottomnavigation.dart';
+ import 'bottomnavigation.dart';
 
 class Address extends StatelessWidget {
   String from;
@@ -106,8 +106,17 @@ class Address extends StatelessWidget {
                   return InkWell(
                       onTap: () {
                         value.addComplaint();
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>bottomnavigation(userId: '', Username: '', Usernumber: '', loginphno: '',)));
-          
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BottomNavigation(
+                                  userId: "",
+                                  username: "",
+                                  userNumber: "",  // Make sure this matches the property name
+                                  loginPhno: "",
+                                )
+                            )
+                        );
                       },
                       child: Center(child: btn2(btn1, "Submit", white, 80, 35, 14, FontWeight.w500, "kadwa")));
                 }

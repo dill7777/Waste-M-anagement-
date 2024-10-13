@@ -69,8 +69,8 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         // home: Profile(User_Number: '',User_Name: '',Photo: '',User_Id: '',),
-        // home: LoginPage(),
-        home: AdminHome(),
+        home: LoginPage(),
+        // home: AdminHome(),
       ),
     );
   }

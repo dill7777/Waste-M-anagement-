@@ -1,98 +1,97 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
-import 'package:trashbuddy/CONSTANT/widget.dart';
-
-import 'binlocation.dart';
 
 class DustBinLocation extends StatelessWidget {
-  const DustBinLocation({super.key});
+  final List<Map<String, dynamic>> nearbyLocations;
+
+  const DustBinLocation({Key? key, required this.nearbyLocations}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-    var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
-
-
     return Scaffold(
       backgroundColor: green1,
       appBar: AppBar(
         backgroundColor: green2,
-        title: Text("Location of Dustbin",
-            style: TextStyle(
-                color: white,
-                fontFamily: "kadwa",
-                fontSize: 21
-            )),
+        title: Text(
+          "Nearby Waste Disposal Locations",
+          style: TextStyle(
+            color: white,
+            fontFamily: "kadwa",
+            fontSize: 21,
+          ),
+        ),
         centerTitle: true,
         leading: InkWell(
-            onTap: (){
-              Navigator.pop(context);
-            },
-            child: Icon(Icons.chevron_left,size: 30,color: white,)),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Text("Garbage Bins Near You !",style: TextStyle(
-                fontFamily: "kadwa",
-                fontSize: 20,
-
-              ),),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            ListView.builder(itemCount: 3,
-    shrinkWrap: true,
-    physics: ScrollPhysics(),
-    itemBuilder: (context, index) {
-        return  Padding(
-          padding: const EdgeInsets.only(bottom: 8.0),
-          child: Container(
-            height: 150,
-            width: 340,
-            decoration: BoxDecoration(
-                color: white,
-                borderRadius: BorderRadius.circular(15)
-            ),
-            child: Column(
-              children: [
-                SizedBox(height: 20,),
-                Row(
-                  children: [
-                    Image(image: AssetImage('assets/img_26.png'),height: 100,),
-                    SizedBox(width: 10,),
-                    Column(
-                      children: [
-                        Text("Sweet Mart\nKulasseri Colony\n Perinthalmanna",style: TextStyle(
-                            fontSize: 12,
-                            fontFamily: "kadwa"
-                        ),),
-                        InkWell(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>BinLocation()));
-                            },
-                            child: btn2(button, "Direction", white, 100, 30, 12, FontWeight.w500,"kadwa"))
-                      ],
-                    )
-                  ],
-                )
-              ],
-            ),
-          ),
-        );
-
-    })
-
-          ],
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.chevron_left, size: 30, color: white),
         ),
       ),
+      body: nearbyLocations.isEmpty
+          ? Center(
+        child: Text(
+          'No nearby locations found',
+          style: TextStyle(
+            fontSize: 18,
+            fontFamily: "kadwa",
+            color: white,
+          ),
+        ),
+      )
+          : ListView.builder(
+        itemCount: nearbyLocations.length,
+        itemBuilder: (context, index) {
+          final location = nearbyLocations[index];
+          return Card(
+            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            color: white,
+            child: ListTile(
+              contentPadding: EdgeInsets.all(16),
+              title: Text(
+                location['name'],
+                style: TextStyle(
+                  fontFamily: "kadwa",
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 8),
+                  Text(
+                    'Type: ${location['type']}',
+                    style: TextStyle(fontFamily: "kadwa"),
+                  ),
+                  Text(
+                    'Distance: ${location['distance']}',
+                    style: TextStyle(fontFamily: "kadwa"),
+                  ),
+                ],
+              ),
+              trailing: ElevatedButton(
+                child: Text('Directions'),
+                onPressed: () => _launchMapsUrl(location['latitude'], location['longitude']),
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: white, backgroundColor: button,
+                  textStyle: TextStyle(fontFamily: "kadwa"),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
     );
+  }
+
+  void _launchMapsUrl(double lat, double lon) async {
+    final url = 'https://www.google.com/maps/dir/?api=1&destination=$lat,$lon';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

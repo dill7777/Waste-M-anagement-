@@ -490,7 +490,6 @@ import 'package:trashbuddy/USER/pickupdone.dart';
 import 'package:trashbuddy/USER/raisecomplaint.dart';
  import 'package:trashbuddy/CONSTANT/widget.dart';
 
-import '../PROVIDER/LocationProvider.dart';
 
 
 class PickupConfirmation extends StatefulWidget {
@@ -508,7 +507,7 @@ class PickupConfirmation extends StatefulWidget {
     required this.selectedItems,
     required this.totalPrice,
     required this.aptNumber,
-    required this.streetController
+    required this.streetController, required mapScreenshot
   }) : super(key: key);
 
   @override
@@ -628,7 +627,7 @@ class _PickupConfirmationState extends State<PickupConfirmation> {
             Padding(
               padding: const EdgeInsets.only(left: 10, top: 15),
               child: Text(
-                "Home\nHouse no 10, Kolasseri colony Perinthalmanna\nMalappuram 656565",
+                "Home\n"+ widget.aptNumber +widget.streetController,
                 style: TextStyle(fontFamily: "kadwa", fontSize: 15),
               ),
             ),
@@ -669,7 +668,9 @@ class _PickupConfirmationState extends State<PickupConfirmation> {
                   ),
                   SizedBox(width: 10),
                   ElevatedButton(
-                    child: Text(_selectedTime == null ? 'Select Time' : _selectedTime!.format(context)),
+                    child: FittedBox(
+
+                        child: Text(style: TextStyle(fontSize: 13,fontWeight: FontWeight.bold),_selectedTime == null ? 'Select Time' : _selectedTime!.format(context))),
                     onPressed: () async {
                       final TimeOfDay? time = await showTimePicker(
                         context: context,

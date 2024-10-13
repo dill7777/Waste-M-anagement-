@@ -14,6 +14,52 @@ class LocationData {
 
 class LocationPro extends ChangeNotifier {
 
+  /// Location enable Validate
+
+  bool _isLocationEnabled = false;
+
+  bool get isLocationEnabled => _isLocationEnabled;
+
+  Future<void> checkLocationStatus() async {
+    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    _isLocationEnabled = serviceEnabled;
+    notifyListeners();
+  }
+
+  Future<void> enableLocation() async {
+    try {
+      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      if (!serviceEnabled) {
+        // The result of openLocationSettings() is not reliable on Android
+        // So we check the status again after it returns
+        await Geolocator.openLocationSettings();
+        serviceEnabled = await Geolocator.isLocationServiceEnabled();
+        if (!serviceEnabled) {
+          throw Exception('Location services are still disabled.');
+        }
+      }
+
+      LocationPermission permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          throw Exception('Location permissions are denied');
+        }
+      }
+
+      if (permission == LocationPermission.deniedForever) {
+        throw Exception('Location permissions are permanently denied, we cannot request permissions.');
+      }
+
+      _isLocationEnabled = true;
+      notifyListeners();
+    } catch (e) {
+      print('Error enabling location: $e');
+      rethrow;
+    }
+  }
+
+
   ///apartment&street
   TextEditingController aptController = TextEditingController();
   TextEditingController streetController = TextEditingController();

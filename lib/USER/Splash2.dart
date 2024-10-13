@@ -3,8 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
 
 import '../PROVIDER/mainprovider.dart';
-import 'bottomnavigation.dart';
-import 'home.dart';
+ import 'bottomnavigation.dart';
 
 class Splash2 extends StatelessWidget {
   const Splash2({super.key});
@@ -65,8 +64,17 @@ class Splash2 extends StatelessWidget {
               return InkWell(
                   onTap: (){
                     value.getCategory();
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>bottomnavigation(userId: '', Username: '', Usernumber: '', loginphno: '',)));
-                  },
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BottomNavigation(
+                              userId: '',
+                              username: '',
+                              userNumber: '',
+                              loginPhno: '',
+                            )
+                        )
+                    );                  },
                   child: btn(green2, "Continue", Colors.white, 120, 50, 18, FontWeight.w500));
             }
           ),        ],

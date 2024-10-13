@@ -232,8 +232,7 @@ import 'package:provider/provider.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:trashbuddy/CONSTANT/Colors.dart';
 import 'package:trashbuddy/CONSTANT/widget.dart';
-import 'package:trashbuddy/PROVIDER/mainProvider.dart';
-import 'package:trashbuddy/USER/proceed_pickup.dart';
+ import 'package:trashbuddy/USER/proceed_pickup.dart';
 
 import '../PROVIDER/locationPro.dart';
 
